@@ -1,0 +1,1 @@
+import 'packages/shower-app/src/styles.css';
