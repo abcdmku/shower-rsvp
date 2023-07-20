@@ -25,21 +25,14 @@ export const MainForm = ({wide}: {wide:boolean}) => {
           aspectRatio: wide ? 1.5 : 0.7,
         }}
       >
-        <div>Please join us for a</div>
-        <div className="pt-3 display-1">Couples</div>
         <div
-          className="pt-1 mb-0 h3 text-uppercase"
-          style={{ letterSpacing: '1.5px' }}
-        >
-          Shower
-        </div>
-        <div>honoring</div>
-        <div
-          className="pt-1 h3 text-uppercase"
+          className="pt-3 h3 text-uppercase"
           style={{ letterSpacing: '1.5px' }}
         >
           Victoria & Lewis
         </div>
+        <div className="pt-3 display-1">Couples Shower</div>
+
         <div className="pt-3">Saturday September 2nd, 2023</div>
         <div>7pm-10pm</div>
         <div className="fw-bold mt-3">Prestige Creative Markets</div>
