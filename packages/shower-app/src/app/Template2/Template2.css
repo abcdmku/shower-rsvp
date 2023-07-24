@@ -1,3 +1,6 @@
+body {
+  height: 100vh !important;
+}
 
 .dusty-rose {
   background-color: #b8a0a8;

@@ -8,10 +8,10 @@ export const Template2 = () => {
   return (
     <body className="u-body text-center">
       <section
-        className="u-align-center u-clearfix u-image u-section-2"
+        className="u-align-center u-clearfix u-image u-section-2 h-100 d-flex align-content-center"
         id="carousel_e4eb"
       >
-        <div className="u-clearfix u-sheet u-valign-middle-xl u-sheet-1 mb-3">
+        <div className="m-auto">
           <div
             className="pt-5 h2 text-uppercase"
             style={{ letterSpacing: '1.5px' }}
