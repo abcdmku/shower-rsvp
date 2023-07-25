@@ -10,7 +10,7 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/packages/shower-app",
+        "outputPath": "docs/packages/shower-app",
         "index": "packages/shower-app/src/index.html",
         "baseHref": "/",
         "main": "packages/shower-app/src/main.tsx",
