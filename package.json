@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "predeploy" : "npx nx run shower-app:build --configuration=production",
-    "deploy" : "gh-pages -d dist/packages/shower-app"
+    "predeploy": "npx nx run shower-app:build --configuration=production",
+    "deploy": "gh-pages -d dist/packages/shower-app"
   },
   "private": true,
   "devDependencies": {
@@ -54,11 +54,13 @@
     "url-loader": "^4.1.1"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.29.0",
     "@swc/helpers": "~0.5.0",
     "qrcode.react": "^3.1.0",
     "react": "18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.45.2",
     "react-router-dom": "6.11.2",
     "tslib": "^2.3.0"
   }

@@ -6,7 +6,17 @@ body {
   background-color: #b8a0a8;
 }
 
+.dusty-rose-light {
+  background-color: #eae3e5;
+}
 
+.dusty-rose-btn {
+  background-color: #dcc2c8;
+}
+
+.dusty-rose-btn:hover {
+  background-color: #cda1ac;
+}
 
   /*begin-commonstyles library*//*!
  * froala_editor v3.2.3 (https://www.froala.com/wysiwyg-editor)
