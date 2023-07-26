@@ -1,5 +1,9 @@
 body {
-  height: 100vh !important;
+  min-height:100vh !important;
+}
+
+.mh-100 {
+  min-height:100vh !important;
 }
 
 .dusty-rose {
@@ -10,8 +14,13 @@ body {
   background-color: #eae3e5;
 }
 
+.dusty-rose-text {
+  color: #4d4346;
+}
+
 .dusty-rose-btn {
-  background-color: #dcc2c8;
+  background-color: #b18c94;
+  color: white
 }
 
 .dusty-rose-btn:hover {

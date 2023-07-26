@@ -16,7 +16,7 @@ export const Template2 = () => {
     <body className="u-body text-center">
       <Modal show={show} onHide={handleClose} centered><ModalForm/></Modal>
       <section
-        className="u-align-center u-clearfix u-image u-section-2 h-100 d-flex align-content-center"
+        className="u-align-center u-clearfix u-image u-section-2 mh-100 d-flex align-content-center"
         id="carousel_e4eb"
       >
         <div className="m-auto">
