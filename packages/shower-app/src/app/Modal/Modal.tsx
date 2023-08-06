@@ -46,7 +46,7 @@ export function ModalForm() {
         <div style={{maxHeight: attending ? '100px': '0px', transition: 'all 500ms', overflowY: 'hidden'}}>
           <Form.Group controlId="children" className='mx-1'>
             <Form.Label className="mb-1">How many others will be attending with your party?</Form.Label>
-            <Form.Control type="number" defaultValue={0} {...register("children")}/>
+            <Form.Control type="number" {...register("children")}/>
           </Form.Group>
         </div>
 
