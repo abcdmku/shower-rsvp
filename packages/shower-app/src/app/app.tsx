@@ -1,8 +1,8 @@
-import Template2 from './Template2/Template2';
+import Wedding from './Wedding/Wedding';
 
 export function App() {
   return (
-      <Template2/>
+    <Wedding/>
   );
 }
 

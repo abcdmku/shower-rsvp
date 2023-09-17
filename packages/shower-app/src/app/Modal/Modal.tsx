@@ -1,5 +1,5 @@
 import { Alert, Button, ButtonGroup, Form, Stack } from "react-bootstrap";
-import '../Template2/Template2.css';
+import '../Wedding/Wedding.css';
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { createClient } from '@supabase/supabase-js'
