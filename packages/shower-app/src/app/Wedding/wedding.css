@@ -33750,7 +33750,7 @@ body {
 
 
   .u-section-2 {
-    background-image: url("./gf-min.png");
+    background-image: url("./gf-min.png") !important;
     background-position: 50% 50%;
   }
   .u-section-2 .u-sheet-1 {
@@ -33772,7 +33772,7 @@ body {
   .u-section-2 .u-image-1 {
     height: 368px;
     width: 368px;
-    background-image: url("./tl.png");
+    background-image: url("./tl2.png");
     background-position: 50% 50%;
     margin: -298px auto 0;
   }

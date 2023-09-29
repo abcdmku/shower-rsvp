@@ -4,7 +4,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
  @import url('https://fonts.googleapis.com/css2?family=Ballet&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Parisienne&display=swap');
-
+ @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Open+Sans:wght@400;500;600;700;800&display=swap');
+ 
  body {
     font-family: 'Cormorant Garamond', serif !important;
   }

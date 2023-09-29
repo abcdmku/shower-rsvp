@@ -1,5 +1,4 @@
 import { QRCodeSVG } from 'qrcode.react';
-import bg from './floralBorder.jpg'; // Tell webpack this JS file uses this image
 import { Ratio, Stack } from 'react-bootstrap';
 
 const registryURL =
@@ -12,7 +11,6 @@ export const MainForm = ({wide}: {wide:boolean}) => {
       style={{
         padding: '33% 18%',
         aspectRatio: wide ? 1.5 : 0.7 ,
-        backgroundImage: `url(${bg})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
