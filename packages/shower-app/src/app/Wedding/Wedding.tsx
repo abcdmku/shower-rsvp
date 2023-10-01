@@ -1,7 +1,7 @@
 import { Modal, Stack } from 'react-bootstrap';
 import './wedding.css';
 import { useState } from 'react';
-import ModalForm from '../Modal/Modal';
+import ModalForm2 from '../Modal copy/Modal';
 
 const registryURL =
   'https://www.amazon.com/wedding/victoria-cafaro-lewis-cafaro-chicago-november-2023/registry/24ZZNNRMCJN73?fbclid=IwAR265KVkjabR8vJ-892Xw2LaogwQz68mBBKv7O5G98WVVW6S6LHIv71fYgI';
@@ -14,7 +14,7 @@ export const Wedding = () => {
 
   return (
     <body className="u-body text-center">
-      <Modal show={show} onHide={handleClose} centered><ModalForm/></Modal>
+      <Modal show={show} onHide={handleClose} centered><ModalForm2/></Modal>
       <section
         className="u-align-center u-clearfix u-image u-section-2 mh-100 d-flex align-content-center"
         id="carousel_e4eb"

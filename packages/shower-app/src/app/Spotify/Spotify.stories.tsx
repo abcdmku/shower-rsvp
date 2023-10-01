@@ -8,5 +8,7 @@ const Story: Meta<typeof Spotify> = {
 export default Story;
 
 export const Primary = {
-  args: {},
+  args: {
+    onChange: () => {}
+  },
 };

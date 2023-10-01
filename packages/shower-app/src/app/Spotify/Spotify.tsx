@@ -1,7 +1,7 @@
 import { SearchResults, SpotifyApi, Track } from '@spotify/web-api-ts-sdk';
 import { FastAverageColor, FastAverageColorResult } from 'fast-average-color';
 import { useEffect, useRef, useState } from 'react';
-import { Accordion, Button, Col, Form, InputGroup, Row, Stack, useAccordionButton } from 'react-bootstrap';
+import { Accordion, Badge, Button, Col, Form, InputGroup, Pagination, Row, Stack, useAccordionButton } from 'react-bootstrap';
 import { Spotify as Player } from 'react-spotify-embed';
 
 const maxAdds = 3; 
@@ -13,49 +13,22 @@ export const Spotify = ({onChange}:{onChange:Function}) => {
   const [trackID, setTrackID] = useState<string>();
   const [requests, setRequests] = useState<Track[]>([]);
   const [canAdd, setCanAdd] = useState(true);
-  useEffect(() => {!sdk && setSdk(SpotifyApi.withClientCredentials('f0c1f16fd7f34754a49cd08662437f25', '7d7f0fe6b892456bae3e8295bbdb1cfb'))});
-  useEffect(() => {setCanAdd(requests.length < maxAdds) }, [requests]);
-  
-  const SearchSong = (search) => sdk?.search(search, ['track'], 'US', 20, 0).then(setItems);
+
+  useEffect(() => {!sdk && setSdk(SpotifyApi.withClientCredentials('f0c1f16fd7f34754a49cd08662437f25', '7d7f0fe6b892456bae3e8295bbdb1cfb', ['playlist-modify-public']))});
+  useEffect(() => {setCanAdd(requests.length < maxAdds); onChange(requests)}, [requests]);
+
+  const SearchSong = (search) => sdk?.search(search, ['track'], 'US', 4, 0).then(setItems);
 
   const dropObj = (arr, key, value) => arr.filter(obj  => obj[key] !== value);
   const filterDupes = (arr, key) => arr.filter((v,i,a)=>a.findIndex(v2=>(v[key] === v2[key]))===i)
 
+
   return sdk ? (
-    <>
-      <Stack gap={1} className='mb-3'>
-        <div className='fs-3'>Requests ({requests.length} / {maxAdds})</div>
-        {requests?.map(track =>
-          <Stack direction='horizontal'>
-            <div>{track.name}</div>
-            <div 
-              onClick={() => setRequests(reqArr => dropObj(reqArr, 'name', track.name))}
-              className="ps-2"
-              style={{cursor: 'pointer'}}
-            >
-              🗙
-            </div>
-          </Stack>
-        )}
-      </Stack>
-      <Accordion defaultActiveKey="0">
-      <Accordion.Header>
-Add songs?
-    </Accordion.Header>      <Accordion.Collapse eventKey="0">
-        <>
-              <Form
-        onSubmit={(e) => (
-          e.preventDefault(),
-          SearchSong(new FormData(e.currentTarget).get('search'))
-        )}
-      >
-        <InputGroup className="mb-3">
-          <Form.Control name="search" id="search" placeholder="Search for song" />
-          <Button variant="outline-secondary" id="button-addon2" type='submit'>
-            Search
-          </Button>
-        </InputGroup>
-      </Form>
+    <Stack gap={2}>
+      <div className=''>Song Requests - ({requests.length} / {maxAdds})</div>
+      <div className='d-flex flex-wrap'>{requests?.map(track => <TrackBadge track={track} onPreview={() => setTrackID(track.id)} onRemove={() => setRequests(reqArr => dropObj(reqArr, 'name', track.name))}/>)}</div>
+      
+      {canAdd && <Form.Control name="search" id="search" placeholder="Search for song" onChange={e => SearchSong(e.currentTarget.value)} />}
 
       {trackID && <Player
         frameBorder={0}
@@ -65,16 +38,13 @@ Add songs?
         link={`https://open.spotify.com/track/${trackID}`}
       />}
 
-      <Row style={{marginBottom: '100px'}}>
+      <Row>
         {items !== undefined && (canAdd 
           ? items.tracks.items.map((track) => <TrackCard track={track} canAdd={canAdd} onAdd={track => setRequests(req => filterDupes([...req, track], 'id'))} onPreview={() => setTrackID(track.id)}/>)
           : <div className='fs-3'>Max songs added!</div>
         )}
-            </Row>
-          </>
-        </Accordion.Collapse>
-      </Accordion>
-    </>
+      </Row>
+    </Stack>
   ) : (
     <>Loading...</>
   );
@@ -100,5 +70,18 @@ export const TrackCard = ({ track, onPreview, onAdd, canAdd }: { track: Track; c
         </Stack>
       </Stack>
     </Col>
+  );
+};
+
+export const TrackBadge = ({ track, onRemove, onPreview }: { track: Track; onPreview: Function; onRemove: () => void }) => {
+  const [color, setColor] = useState<FastAverageColorResult>();
+  const fac = new FastAverageColor();
+  fac.getColorAsync(track.album.images[0].url).then((color) => setColor(color));
+  return (
+    <Stack direction="horizontal" gap={2} className={`rounded-pill me-2 my-1 pe-2 ps-2 text-${color?.isLight ? 'dark' : 'light'}`} style={{background: color?.hex, filter: 'saturate(3)'}}>
+      <span style={{fontSize: '12px', cursor: 'pointer'}} onClick={() => onPreview()}>▶︎</span>
+      <span style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',}}>{track.name}</span>
+      <span onClick={() => onRemove()} className='ps-2' style={{cursor: 'pointer'}}>🗙</span>
+    </Stack>
   );
 };
