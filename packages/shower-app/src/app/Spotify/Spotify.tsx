@@ -51,7 +51,6 @@ export const Spotify = ({onChange}:{onChange:Function}) => {
 
 export default Spotify;
 
-
 export const TrackCard = ({ track, onPreview, onAdd, canAdd }: { track: Track; canAdd: Boolean; onPreview: Function; onAdd: (track: Track) => void }) => {
   const [color, setColor] = useState<FastAverageColorResult>();
   const fac = new FastAverageColor();
@@ -64,8 +63,8 @@ export const TrackCard = ({ track, onPreview, onAdd, canAdd }: { track: Track; c
         <div className="h5 px-2" style={{ fontSize: '14px'}}>{track.name}</div>
         <Stack direction='horizontal' className="mb-2 px-2">
           <div className="h6" style={{ fontSize: '14px'}}>{msToMinSec(track.duration_ms)}</div>
-          <Button size='sm' className="ms-auto rounded-pill fw-bold monospace" style={{ fontSize: '16px', width:'27px', height:'27px', lineHeight: '1'}} variant={`${color?.isDark ? 'dark' : 'light'}`} onClick={() => onAdd(track)} disabled={!canAdd}>+</Button>
-          <Button size='sm' className="ms-2 rounded-pill" style={{ fontSize: '12px'}} onClick={() => onPreview()} variant={`${color?.isDark ? 'dark' : 'light'}`}>▶︎</Button>
+          <Button size='sm' className={`ms-auto rounded-pill fw-bold monospace text-${color?.isDark ? 'dark' : 'light'}`} style={{ fontSize: '16px', width:'27px', height:'27px', lineHeight: '1'}} variant={`${color?.isLight ? 'dark' : 'light'}`} onClick={() => onAdd(track)} disabled={!canAdd}>+</Button>
+          <Button size='sm' className={`ms-2 rounded-pill text-${color?.isDark ? 'dark' : 'light'}`} style={{ fontSize: '12px'}} onClick={() => onPreview()} variant={`${color?.isLight ? 'dark' : 'light'}`}>▶︎</Button>
         </Stack>
       </Stack>
     </Col>

@@ -35,7 +35,7 @@ export function ModalForm2() {
     console.log()
   }, []);
 
-  return (submitted ? <div className="dusty-rose-light p-3 rounded-2">Thanks for filling out the RSVP! Save this link if you want to edit your response: <br/><a href={window.location.origin + '/' + fromUUID(submitted.id)}>{window.location.origin + '/' + fromUUID(submitted.id)}</a></div> :
+  return (submitted ? <div className="dusty-rose-light p-3 rounded-2">Thanks for filling out the RSVP! Save this link if you want to edit your response: <br/><a href={window.location.origin + '?edit=' + fromUUID(submitted.id)}>{window.location.origin + '?edit=' + fromUUID(submitted.id)}</a></div> :
     <Form className="dusty-rose-light p-3 rounded-2" onSubmit={handleSubmit(onSubmit)}>
       {message && <Alert variant="danger" className='py-2'>Error submitting form: {message}</Alert>}
       <Stack gap={4}>
