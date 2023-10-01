@@ -28,7 +28,7 @@ export const Spotify = ({onChange}:{onChange:Function}) => {
       <div className=''>Song Requests - ({requests.length} / {maxAdds})</div>
       <div className='d-flex flex-wrap'>{requests?.map(track => <TrackBadge track={track} onPreview={() => setTrackID(track.id)} onRemove={() => setRequests(reqArr => dropObj(reqArr, 'name', track.name))}/>)}</div>
       
-      {canAdd && <Form.Control name="search" id="search" placeholder="Search for song" onChange={e => SearchSong(e.currentTarget.value)} />}
+      {canAdd && <Form.Control name="search" id="search" placeholder="Search for song" onChange={e => SearchSong(e.currentTarget.value)}  onKeyDown={(e) => { e.key === 'Enter' && e.preventDefault(); }}/>}
 
       {trackID && <Player
         frameBorder={0}
