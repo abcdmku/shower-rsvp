@@ -13,30 +13,29 @@ export const Spotify = ({onChange}:{onChange:Function}) => {
   const [trackID, setTrackID] = useState<string>();
   const [requests, setRequests] = useState<Track[]>([]);
   const [canAdd, setCanAdd] = useState(true);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {!sdk && setSdk(SpotifyApi.withClientCredentials('f0c1f16fd7f34754a49cd08662437f25', '7d7f0fe6b892456bae3e8295bbdb1cfb', ['playlist-modify-public']))});
   useEffect(() => {setCanAdd(requests.length < maxAdds); onChange(requests)}, [requests]);
+  useEffect(() => {search?.length > 0 ? SearchSong(search) : setItems(undefined)}, [search]);
 
   const SearchSong = (search) => sdk?.search(search, ['track'], 'US', 4, 0).then(setItems);
 
   const dropObj = (arr, key, value) => arr.filter(obj  => obj[key] !== value);
   const filterDupes = (arr, key) => arr.filter((v,i,a)=>a.findIndex(v2=>(v[key] === v2[key]))===i)
 
-
   return sdk ? (
     <Stack gap={2}>
       <div className=''>Song Requests - ({requests.length} / {maxAdds})</div>
-      <div className='d-flex flex-wrap'>{requests?.map(track => <TrackBadge track={track} onPreview={() => setTrackID(track.id)} onRemove={() => setRequests(reqArr => dropObj(reqArr, 'name', track.name))}/>)}</div>
+      <div className='d-flex flex-wrap'>{requests?.map(track => <TrackBadge track={track} onPreview={() => setTrackID(track.id)} onRemove={() => setRequests(reqArr => dropObj(reqArr, 'id', track.id))}/>)}</div>
       
-      {canAdd && <Form.Control name="search" id="search" placeholder="Search for song" onChange={e => SearchSong(e.currentTarget.value)}  onKeyDown={(e) => { e.key === 'Enter' && e.preventDefault(); }}/>}
+      {canAdd && <Form.Control name="search" id="search" placeholder="Search for song" onChange={e => setSearch(e.currentTarget.value)}  onKeyDown={(e) => { e.key === 'Enter' && e.preventDefault(); }}/>}
 
-      {trackID && <Player
-        frameBorder={0}
-        className='fixed-bottom'
-        wide
-        width="100%"
-        link={`https://open.spotify.com/track/${trackID}`}
-      />}
+      {trackID && <>
+        <Button size='sm' variant="dark" className="fixed-bottom ms-auto rounded-pill fw-bold font-monospace text-light" style={{ fontSize: '16px', width:'27px', height:'27px', lineHeight: '1', marginRight: '3px', marginBottom: '50px', paddingBottom: '8px', zIndex: 10000}} onClick={() => setTrackID(undefined)}>x</Button>
+        <Player className='fixed-bottom' wide width="100%" link={`https://open.spotify.com/track/${trackID}`}/>
+      </>
+      }
 
       <Row>
         {items !== undefined && (canAdd 
@@ -81,7 +80,7 @@ export const TrackBadge = ({ track, onRemove, onPreview }: { track: Track; onPre
     <Stack direction="horizontal" gap={2} className={`rounded-pill me-2 my-1 pe-2 ps-2 text-${color?.isLight ? 'dark' : 'light'}`} style={{background: color?.hex, filter: 'saturate(3)'}}>
       <span style={{fontSize: '12px', cursor: 'pointer'}} onClick={() => onPreview()}>▶︎</span>
       <span style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',}}>{track.name}</span>
-      <span onClick={() => onRemove()} className='ps-2' style={{cursor: 'pointer'}}>🗙</span>
+      <span onClick={() => onRemove()} className='ps-2 fw-bold font-monospace' style={{cursor: 'pointer', paddingBottom: '3px'}}>x</span>
     </Stack>
   );
 };
