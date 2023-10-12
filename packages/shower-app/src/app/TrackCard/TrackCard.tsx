@@ -8,18 +8,19 @@ export interface TrackCardProps {
   track: Track;
   canAdd: Boolean;
   onPreview: Function;
+  minWidth?: string;
   onAdd: (track: Track) => void;
 }
 
 const msToMinSec = (time:number) => `${Math.floor(time/60000)}:${Math.floor((time % 60000)/1000).toString().padStart(2, '0')}`
 
-export const TrackCard = ({ track, onPreview, onAdd, canAdd }: TrackCardProps) => {
+export const TrackCard = ({ track, onPreview, minWidth='150px', onAdd, canAdd }: TrackCardProps) => {
   const [color, setColor] = useState<FastAverageColorResult>();
   const fac = new FastAverageColor();
   fac.getColorAsync(track.album.images[0].url).then((color) => setColor(color));
   return (
-    <Col key={track.id} className="my-3">
-      <Stack className={`rounded-3 shadow fw-bold ${color?.isDark ? 'text-light' : 'text-dark'}`} style={{ minWidth: '150px', fontFamily: 'Open Sans', background: color?.hex, filter: 'saturate(3)'}}>
+    <Col key={track.id}>
+      <Stack className={`rounded-3 shadow fw-bold ${color?.isDark ? 'text-light' : 'text-dark'}`} style={{ minWidth, fontFamily: 'Open Sans', background: color?.hex, filter: 'saturate(3)'}}>
         <img src={track.album.images[0].url} width="100%" style={{filter: 'saturate(.5)'}} />
         <div className="h6 px-2 mt-1" style={{ fontSize: '12px'}}>{track.artists.map((artist) => artist.name).join(', ')}</div>
         <div className="h5 px-2" style={{ fontSize: '14px'}}>{track.name}</div>

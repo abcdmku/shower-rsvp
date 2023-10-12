@@ -40,29 +40,28 @@ export function ViewSongs() {
   }, []);
 
   return sdk ? (
-    <Stack gap={2} className="p-3">
+    <Stack gap={3} className="p-1">
       {trackID && <>
         <Button size='sm' variant="dark" className="fixed-bottom ms-auto rounded-pill fw-bold font-monospace text-light" style={{ fontSize: '16px', width:'27px', height:'27px', lineHeight: '1', marginRight: '3px', marginBottom: '50px', paddingBottom: '8px', zIndex: 10000}} onClick={() => setTrackID(undefined)}>x</Button>
         <Player className='fixed-bottom' wide width="100%" link={`https://open.spotify.com/track/${trackID}`}/>
       </>}
-      <Row>
         {items !== undefined && 
         items.map(entry => (
-          <Card>
-            <div className="h5 mt-3">{entry.name} - Attending: {entry.attending ? "yes" : "no"} <br/> Adults: {entry.adults} - Children: {entry.children}</div>
+          <Card className="p-2">
+            <div className="h5">{entry.name} - Attending: {entry.attending ? "yes" : "no"} <br/> Adults: {entry.adults} - Children: {entry.children}</div>
             <Row>
               {entry.requests ? entry.requests.map(track => 
                 <TrackCard 
                   track={track}
                   canAdd={true}
                   onAdd={(track) => {sdk.playlists.addItemsToPlaylist('7ol5OceflKFFi7djk5tHHW', [track.uri])}}
+                  minWidth="80px"
                   onPreview={() => setTrackID(track.id)}
                 />
               ) : <>No Tracks Added</>}
             </Row>
           </Card>
         ))}
-      </Row>
     </Stack>
   ) : (
     <>Loading...</>
