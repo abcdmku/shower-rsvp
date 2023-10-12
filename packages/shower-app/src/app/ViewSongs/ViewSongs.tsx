@@ -20,7 +20,6 @@ export function ViewSongs() {
   const [sdk, setSdk] = useState<SpotifyApi>();
   const [items, setItems] = useState<Array<DataBaseProps>>();
   const [trackID, setTrackID] = useState<string>();
-  const [requests, setRequests] = useState<Track[]>([]);
 
   useEffect(() => {!sdk && setSdk(
     SpotifyApi.withUserAuthorization("f0c1f16fd7f34754a49cd08662437f25", window.location.origin, ["playlist-modify-public"])
@@ -41,7 +40,7 @@ export function ViewSongs() {
   }, []);
 
   return sdk ? (
-    <Stack gap={2}>
+    <Stack gap={2} className="p-3">
       {trackID && <>
         <Button size='sm' variant="dark" className="fixed-bottom ms-auto rounded-pill fw-bold font-monospace text-light" style={{ fontSize: '16px', width:'27px', height:'27px', lineHeight: '1', marginRight: '3px', marginBottom: '50px', paddingBottom: '8px', zIndex: 10000}} onClick={() => setTrackID(undefined)}>x</Button>
         <Player className='fixed-bottom' wide width="100%" link={`https://open.spotify.com/track/${trackID}`}/>
