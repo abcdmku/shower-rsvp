@@ -1,13 +1,9 @@
-import ViewSongs from './ViewSongs/ViewSongs';
-import Wedding from './Wedding/Wedding';
+import Template3 from "./Template3/Template3";
 
 export function App() {
-  const urlParams = new URLSearchParams(window.location.search);
-  let code = urlParams.get('code');
 
   return (
-    code ? <ViewSongs/> :
-    <Wedding/>
+    <Template3/>
   );
 }
 
