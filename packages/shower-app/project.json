@@ -13,7 +13,7 @@
         "compiler": "babel",
         "outputPath": "dist/packages/shower-app",
         "index": "packages/shower-app/src/index.html",
-        "baseHref": "/shower-rsvp",
+        "baseHref": "/",
         "main": "packages/shower-app/src/main.tsx",
         "tsConfig": "packages/shower-app/tsconfig.app.json",
         "assets": [
