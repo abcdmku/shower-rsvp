@@ -25,7 +25,7 @@ export const Template3 = () => {
           </div>
           <div className="pt-4 display-1 pb-2" style={{color:"#907a68"}}>We can bearly wait</div>
           <Stack className='fs-4 mt-4'>
-            <div className="fs-3 lh-sm pb-2">Saturday September 2nd, 2023 <br className='d-block d-sm-none'/>6pm-11pm</div>
+            <div className="fs-3 lh-sm pb-2">Saturday November 16th, 2024 <br className='d-block d-sm-none'/>6pm-11pm</div>
             <a href="https://goo.gl/maps/Y3iybKj6dGBufJecA" className=''><span>Prestige Creative Markets - Bartlett, IL</span></a>
             <div>Please register before october 25th, 2024</div>
           </Stack>
