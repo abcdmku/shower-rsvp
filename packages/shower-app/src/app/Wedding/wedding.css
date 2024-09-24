@@ -26700,13 +26700,14 @@ body {
   .u-button-style.u-border-palette-2-dark-2 {
     border-color: #6b4748 !important;
     color: #6b4748 !important;
-    background-color: transparent !important;
+    background-color: #e6dbe980 !important;
   }
   .u-button-style.u-border-palette-2-dark-2:hover,
   .u-button-style.u-border-palette-2-dark-2:focus {
-    border-color: #604041 !important;
-    color: #604041 !important;
-    background-color: transparent !important;
+    border-color: #7a5859cc !important;
+    color: #7a5859cc !important;
+    background-color: #f6ebf980 !important;
+    
   }
   .u-border-hover-palette-2-dark-2:hover,
   .u-border-hover-palette-2-dark-2:focus,
@@ -28069,8 +28070,8 @@ body {
   }
   .u-button-style.u-border-black:hover,
   .u-button-style.u-border-black:focus {
-    border-color: #000000 !important;
-    color: #000000 !important;
+    border-color: #dbcdcd !important;
+    color: #dbcdcd !important;
     background-color: transparent !important;
   }
   .u-border-hover-black:hover,
@@ -28083,14 +28084,14 @@ body {
   a.u-button-style.u-button-style.u-border-active-black.active,
   a.u-button-style.u-button-style.active > .u-border-active-black,
   li.active > a.u-button-style.u-button-style.u-border-active-black {
-    color: #000000 !important;
-    border-color: #000000 !important;
+    color: #dbcdcd !important;
+    border-color: #dbcdcd !important;
   }
   .u-link.u-border-black[class*="u-border-"] {
     border-color: #000000 !important;
   }
   .u-link.u-border-black[class*="u-border-"]:hover {
-    border-color: #000000 !important;
+    border-color: #dbcdcd !important;
   }
   .u-border-body-color,
   .u-separator-body-color:after {
@@ -32678,7 +32679,7 @@ body {
   a.u-button-style.u-button-style.u-text-black[class*="u-border-"]:active,
   a.u-button-style.u-button-style.u-text-black.active,
   a.u-button-style.u-button-style.u-text-black[class*="u-border-"].active {
-    color: #000000 !important;
+    color: #dbcdcd !important;
   }
   a.u-button-style:hover > .u-text-hover-black,
   a.u-button-style:hover > .u-text-hover-black[class*="u-border-"],
@@ -32696,7 +32697,8 @@ body {
   :not(.level-2) > .u-nav > .u-nav-item > a.u-nav-link.u-nav-link.u-text-active-black.active,
   .u-popupmenu-items.u-text-hover-black .u-nav-link:hover,
   .u-popupmenu-items.u-popupmenu-items.u-text-active-black .u-nav-link.active {
-    color: #000000 !important;
+    color: #7a5859 !important;
+    opacity: .7;
   }
   .u-text-black svg,
   .u-text-hover-black:hover svg,
@@ -33817,7 +33819,7 @@ body {
   }
   @media (max-width: 767px) {
     .u-section-2 {
-      background-position: 26.94% 50%;
+      background-position: 30% 50%;
     }
     .u-section-2 .u-sheet-1 {
       min-height: 379px;

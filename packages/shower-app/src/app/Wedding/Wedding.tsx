@@ -1,5 +1,4 @@
 import { Modal, Stack } from 'react-bootstrap';
-import './wedding.css';
 import { useState } from 'react';
 import ModalForm2 from '../Modal copy/Modal';
 
@@ -40,7 +39,7 @@ export const Wedding = () => {
           <div><a href={registryURL} className="text-decoration-underline u-border-2  u-btn u-btn-round u-button-style u-none u-radius-25 u-text-hover-black u-text-palette-2-dark-2 u-btn-2 mb-0">
             Registry
           </a></div>
-          <div onClick={e=> handleShow()} className="mt-2 u-border-2 u-border-palette-2-dark-2 u-btn u-btn-round u-button-style u-none u-radius-25 u-text-hover-black u-text-palette-2-dark-2 u-btn-2">
+          <div onClick={e=> handleShow()} className="mt-2 u-border-2 u-border-palette-2-dark-2 u-btn u-btn-round u-button-style u-none u-radius-25 u-text-hover-black u-text-palette-2-dark-2 u-btn-2 transparent">
             RSVP
           </div> 
         </div>

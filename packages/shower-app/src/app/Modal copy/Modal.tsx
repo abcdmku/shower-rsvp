@@ -1,5 +1,4 @@
 import { Alert, Button, ButtonGroup, Form, Stack } from "react-bootstrap";
-import '../Wedding/wedding.css';
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { createClient } from '@supabase/supabase-js'
